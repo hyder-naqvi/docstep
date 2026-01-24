@@ -651,8 +651,7 @@ label.full {
   margin-top: 30px;
 }
 
-.footer-links,
-.footer-meta {
+.footer-links {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
@@ -660,13 +659,25 @@ label.full {
 }
 
 .footer-meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--muted);
   margin-left: auto;
-  text-align: right;
 }
 
 .footer-meta span {
   display: inline-block;
-  min-width: 64px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-meta span:hover {
+  color: var(--primary);
 }
 
 .solid,
@@ -1015,11 +1026,14 @@ label.full {
 
   .footer-meta {
     margin-left: 0;
-    text-align: left;
     width: 100%;
     justify-content: flex-start;
-    flex-direction: column;
-    gap: 8px;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .footer-meta span {
+    font-size: 13px;
   }
 
   .solid,
