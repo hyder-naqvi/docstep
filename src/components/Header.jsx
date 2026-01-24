@@ -1,10 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const isAuthPage = pathname === '/login' || pathname === '/signup';
 
   useEffect(() => {
@@ -15,6 +16,24 @@ const Header = () => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  const handleSectionClick = (sectionId) => {
+    setOpen(false);
+    if (pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <header className={`topbar ${isAuthPage ? 'topbar--blend' : ''}`}>
       <Link className="logo" to="/" onClick={() => setOpen(false)}>
@@ -22,10 +41,34 @@ const Header = () => {
       </Link>
 
       <nav className="nav desktop-only" aria-label="Primary">
-        <a href="/#services">Services</a>
-        <a href="/#doctors">Doctors</a>
-        <a href="/#booking">Book</a>
-        <a href="/#faq">FAQ</a>
+        <button 
+          type="button"
+          onClick={() => handleSectionClick('services')}
+          className="nav-link"
+        >
+          Services
+        </button>
+        <button 
+          type="button"
+          onClick={() => handleSectionClick('doctors')}
+          className="nav-link"
+        >
+          Doctors
+        </button>
+        <button 
+          type="button"
+          onClick={() => handleSectionClick('booking')}
+          className="nav-link"
+        >
+          Book
+        </button>
+        <button 
+          type="button"
+          onClick={() => handleSectionClick('faq')}
+          className="nav-link"
+        >
+          FAQ
+        </button>
       </nav>
 
       <div className="actions desktop-only">
@@ -61,18 +104,34 @@ const Header = () => {
         >
           <div className="mobile-menu-content">
             <nav className="mobile-nav" aria-label="Mobile">
-              <a href="/#services" onClick={() => setOpen(false)}>
+              <button 
+                type="button"
+                onClick={() => handleSectionClick('services')}
+                className="mobile-nav-link"
+              >
                 Services
-              </a>
-              <a href="/#doctors" onClick={() => setOpen(false)}>
+              </button>
+              <button 
+                type="button"
+                onClick={() => handleSectionClick('doctors')}
+                className="mobile-nav-link"
+              >
                 Doctors
-              </a>
-              <a href="/#booking" onClick={() => setOpen(false)}>
+              </button>
+              <button 
+                type="button"
+                onClick={() => handleSectionClick('booking')}
+                className="mobile-nav-link"
+              >
                 Book Appointment
-              </a>
-              <a href="/#faq" onClick={() => setOpen(false)}>
+              </button>
+              <button 
+                type="button"
+                onClick={() => handleSectionClick('faq')}
+                className="mobile-nav-link"
+              >
                 FAQ
-              </a>
+              </button>
             </nav>
             <div className="mobile-actions">
               <ThemeToggle />

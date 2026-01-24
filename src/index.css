@@ -118,12 +118,20 @@ select:focus-visible,
   font-weight: 500;
 }
 
-.nav a {
+.nav-link {
+  background: none;
+  border: none;
   color: var(--text);
   opacity: 0.8;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
 }
 
-.nav a:hover {
+.nav-link:hover {
   opacity: 1;
 }
 
@@ -211,21 +219,26 @@ select:focus-visible,
   margin-bottom: 16px;
 }
 
-.mobile-nav a {
+.mobile-nav-link {
   padding: 16px 18px;
   border-radius: 12px;
   font-weight: 600;
   font-size: 16px;
   color: var(--text);
   background: transparent;
+  border: none;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   min-height: 48px;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-.mobile-nav a:hover,
-.mobile-nav a:active {
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
   background: color-mix(in srgb, var(--primary) 12%, transparent);
   color: var(--primary);
   transform: translateX(4px);
