@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Hero = () => (
   <section className="hero">
     <div className="hero-copy">
@@ -58,9 +60,9 @@ const Hero = () => (
           <span className="pill">Thu · 3:45 PM</span>
         </li>
       </ul>
-      <a className="solid full" href="/availability">
+      <Link className="solid full" to="/availability">
         See all availability
-      </a>
+      </Link>
     </div>
   </section>
 );
