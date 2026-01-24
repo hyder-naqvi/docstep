@@ -49,29 +49,40 @@ const Header = () => {
       </button>
 
       {open && (
-        <div className="mobile-menu" role="dialog" aria-label="Mobile menu">
-          <nav className="mobile-nav" aria-label="Mobile">
-            <a href="/#services" onClick={() => setOpen(false)}>
-              Services
-            </a>
-            <a href="/#doctors" onClick={() => setOpen(false)}>
-              Doctors
-            </a>
-            <a href="/#booking" onClick={() => setOpen(false)}>
-              Book
-            </a>
-            <a href="/#faq" onClick={() => setOpen(false)}>
-              FAQ
-            </a>
-          </nav>
-          <div className="mobile-actions">
-            <ThemeToggle />
-            <Link className="ghost" to="/login" onClick={() => setOpen(false)}>
-              Log in
-            </Link>
-            <Link className="solid" to="/signup" onClick={() => setOpen(false)}>
-              Sign up
-            </Link>
+        <div 
+          className="mobile-menu" 
+          role="dialog" 
+          aria-label="Mobile menu"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setOpen(false);
+            }
+          }}
+        >
+          <div className="mobile-menu-content">
+            <nav className="mobile-nav" aria-label="Mobile">
+              <a href="/#services" onClick={() => setOpen(false)}>
+                Services
+              </a>
+              <a href="/#doctors" onClick={() => setOpen(false)}>
+                Doctors
+              </a>
+              <a href="/#booking" onClick={() => setOpen(false)}>
+                Book Appointment
+              </a>
+              <a href="/#faq" onClick={() => setOpen(false)}>
+                FAQ
+              </a>
+            </nav>
+            <div className="mobile-actions">
+              <ThemeToggle />
+              <Link className="ghost" to="/login" onClick={() => setOpen(false)}>
+                Log in
+              </Link>
+              <Link className="solid" to="/signup" onClick={() => setOpen(false)}>
+                Sign up
+              </Link>
+            </div>
           </div>
         </div>
       )}
